@@ -29,7 +29,8 @@ body {
 
 h1 {
   font-size: 3.2em;
-  line-height: 1.1;
+
+  padding: 1px;
 }
 
 @media (prefers-color-scheme: light) {
