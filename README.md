@@ -1,2 +1,2 @@
 # arsat-ai
-Generar una ideantidad visual para una agencia aerospacial argentina con el el nombre de ARSAT - ARAE , generar musica a partir de las imagenes
+AI Generated images in the style of a Argentina Aerospace Agency - ARAE , generar musica a partir de las imagenes
