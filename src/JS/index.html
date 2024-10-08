@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Grid</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="/style/styles.css">
+</head>
+<body>
+    <div class="grid">
+        <!-- Images will be loaded here by JavaScript -->
+    </div>
+    <script>
+        const asciiChars = '!@#$%^&*()_+-={}[]|;:,.<>?';
+        const title = document.querySelector('.title');
+        let originalText;
+        let intervalId;
+        title.addEventListener('mouseenter', startGlitchEffect);
+        title.addEventListener('mouseleave', stopGlitchEffect);
+
+        function startGlitchEffect() {
+            originalText = title.textContent;
+            intervalId = setInterval(glitchText, 75);
+        }
+
+        function stopGlitchEffect() {
+            clearInterval(intervalId);
+            title.textContent = originalText;
+        }
+
+        function glitchText() {
+            let glitchedText = '';
+            for (let i = 0; i < originalText.length; i++) {
+                if (Math.random() < 0.3) {
+                    glitchedText += asciiChars[Math.floor(Math.random() * asciiChars.length)];
+                } else {
+                    glitchedText += originalText[i];
+                }
+            }
+            title.textContent = glitchedText;
+        }
+             
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function loadImagesFromDirectory(directoryPath, fileNames) {
+            const grid = document.querySelector('.grid');
+            const shuffledFileNames = shuffleArray([...fileNames]);
+
+            shuffledFileNames.forEach((fileName, index) => {
+                const gridItem = document.createElement('div');
+                gridItem.className = 'grid-item';
+
+                const img = document.createElement('img');
+                img.src = `${directoryPath}/${fileName}`;
+                img.alt = `Image ${index + 1}`;
+                img.onload = () => {
+                    gridItem.style.gridRowEnd = `span ${Math.ceil(img.height / 10)}`;
+                };
+                img.onerror = () => {
+                    gridItem.remove();
+                };
+
+                gridItem.appendChild(img);
+                grid.appendChild(gridItem);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Example file names, including both images and GIFs
+            const fileNames = [
+                '01.gif', '010.gif', '011.gif', '012.gif', '013.gif', '02.gif', '03.gif', '04.gif', '05.gif', '06.gif', '07.gif', '08.gif', '09.gif', 'Anal__00052_.png', 'bamidjourney_Blade_Runner_2049_Denis_Villanueve_arrakis_frank_h_27004594-1757-4ea5-9f59-438771585027.png', 'bamidjourney_Blade_Runner_2049_Denis_Villanueve_arrakis_frank_h_905e828c-9391-4551-8f1d-3f6d25089f69.png', 'bamidjourney_casual_social_media_photograph_of_a_UFO_metallic_i_50e942d7-9663-4dab-8170-36012d316692.png', 'bamidjourney_casual_social_media_photograph_of_a_UFO_metallic_i_6e7a41ff-46d1-4b78-83cd-1f0b66fd82a7.png', 'bamidjourney_casual_social_media_photograph_of_a_UFO_metallic_i_74ac2b00-d850-48d3-8eaa-7ed14ee5ba04.png', 'bamidjourney_casual_social_media_photograph_of_a_UFO_metallic_i_ee6a258b-4b00-43fd-89b9-69093b2a0c52.png', 'bamidjourney_cinematic_analog_film_shot_of_a_futuristic_blue_co_e98f205b-8e65-4e1a-9713-b8d3a8473d3e.png', 'bamidjourney_Cinematic_film_grain_portrait_of_alejandro_jodorow_5dfc7484-c612-4ddc-abc3-3b9bc0c3dd00.png', 'bamidjourney_cinematic_film_still_analog_frame_of_a_tarot_death_c2376c32-e6c1-4135-ab2f-85723d2a1734.png', 'bamidjourney_Dune_arrakis_frank_herbert_ornithopter_cinematic_f_bc174d29-ad83-4999-b834-39ee105e9d8c.png', 'bamidjourney_Dune_arrakis_frank_herbert_ornithopter_cinematic_f_d6a4f7ff-bcef-4cac-a91a-bcd7ddac300c.png', 'bamidjourney_Dune_arrakis_frank_herbert_paul_atreides_cinematic_c692ff37-afae-4396-b489-d0898702c5a0.png', 'bamidjourney_e_prompt--sref_f0e0eb37-e9b0-4323-8c4f-8b1b63cfe45f.png', 'bamidjourney_portrait_of_alejandro_jodorowsky_wearing_a_hood_on_4fcfa695-7249-4471-a955-e9f79ac08d49.png', 'Base__00299_.png', 'Base__00317_.png', 'Base__00326_.png', 'Base__00459_.png', 'Base__00461_.png', 'Base__00470_.png', 'Base__00488_.png', 'Base__00493_.png', 'Base__00511_.png', 'Base__00514_.png', 'Flux_Refined_00020_.png', 'Flux_Refined_00023_.png', 'Flux_Refined_00030_.png', 'Flux_Refined_00037_.png', 'Flux_Refined_00042_.png', 'Flux_Refined_00133_.png', 'Flux_Refined_00135_.png', 'Flux_Refined_00211_.png', 'Flux_Refined_00214_.png', 'Flux_Refined_00216_.png', 'Flux_Refined_00232_.png', 'Flux_Refined_00238_.png', 'Flux_Refined_00298_.png', 'Flux_Refined_00370_.png', 'Flux_Refined_00392_.png', 'Flux_Refined_00399_.png', 'Flux_Refined_00481_.png', 'Flux__00071_.png', 'Flux__00131_.png', 'Flux__00180_.png', 'Flux__00299_.png', 'Flux__00302_.png', 'Flux__00304_.png', 'Flux__00353_.png', 'Flux__00361_.png', 'Flux__00362_.png', 'Flux__00371_.png', 'Flux__00379_.png', 'Flux__00387_.png', 'Flux__00391_.png', 'Flux__00394_.png', 'Flux__00415_.png', 'image11.png', 'image12.png', 'image13.png', 'image16.png', 'image18.png', 'image20.png', 'image21.png', 'image23.png', 'image24.png', 'image26.png', 'image27.png', 'image30.png', 'image4.png', 'image5.png', 'image6.png', 'image7.png', 'image8.png', 'IPADAPTERSPACESHIP_00022_.png', 'IPADAPTERSPACESHIP_00028_.png'
+            ];
+            loadImagesFromDirectory('./gallery', fileNames);
+        });
+    </script>
+</body>
+</html>

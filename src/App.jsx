@@ -1,6 +1,7 @@
 import React from 'react'
 import About from './components/About'
 import AudioDevice from './components/AudioDevice'
+import Metadata from './components/Metadata'
 import Gallery from './components/Gallery'
 import './App.css'
 
@@ -17,7 +18,7 @@ function App() {
         </div>
         <div className="bottom-right">
           {/* Content for bottom right section */}
-          <AudioDevice />
+          <Metadata />
         </div>
       </div> 
     </div>

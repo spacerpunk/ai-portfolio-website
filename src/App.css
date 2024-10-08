@@ -19,13 +19,13 @@ body, html {
 
 .left-side {
   flex: 3; /* Adjust this value to control the proportion */
-  overflow: auto;
+  overflow: hidden;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
 }
 
 .right-side {
-  flex: 2; /* Adjust this value to control the proportion */
+  flex: 1; /* Adjust this value to control the proportion */
   display: flex;
   margin: 10px;
   flex-direction: column;
@@ -42,12 +42,12 @@ body, html {
 }
 
 .top-right {
-  flex:1;
+  flex:2;
   background-color: #e0e0e0;
 }
 
 .bottom-right {
-  flex: 2;
+  flex: 1;
   background-color: #d0d0d0;
 }
 
