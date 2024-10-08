@@ -7,43 +7,27 @@
 
 .grid-item {
   position: relative;
-  width: 100%;
-  padding-bottom: 100%; /* This creates a 1:1 aspect ratio */
-  overflow: hidden;
+  overflow: visible;
 }
 
 .grid-item img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* This will crop the image to fill the square */
-  object-position: center; /* This centers the image within the square */
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .grid-item:hover {
-  transform: scale(1.05);
-}
-
-.grid-item img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  transform: scale(1.1);
+  z-index: 2;
 }
 
 /* In Gallery.css */
 .gallery-container {
   height: 100%;
   overflow: auto;
-}
-
-.grid {
-  height: auto;
-  min-height: 100%;
 }
 
 @media (max-width: 1280px) {
