@@ -1,15 +1,16 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 10px;
-  padding: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 25px;
 }
 
 .grid-item {
   position: relative;
   overflow: visible;
+  transition: all .2s ease-in-out;
 }
-
+ 
 .grid-item img {
   width: 100%;
   height: auto;
@@ -17,6 +18,7 @@
   transition: transform 0.3s ease;
   position: relative;
   z-index: 1;
+  border-radius: 35px;
 }
 
 .grid-item:hover {
@@ -26,8 +28,8 @@
 
 /* In Gallery.css */
 .gallery-container {
-  height: 100%;
-  overflow: auto;
+  height: auto;
+  overflow: visible;
 }
 
 @media (max-width: 1280px) {

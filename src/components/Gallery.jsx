@@ -26,6 +26,8 @@ const Gallery = () => {
     const fileNames = [
       'arsat (1).png','arsat (2).png','arsat (3).png','arsat (4).png',
       'arsat (5).png','arsat (6).png','arsat (7).png','arsat (8).png',
+      'Base__00370_.png','PF_Grain__00072_.png','PF_Grain__00090_.png',
+      'Anal__00034_.png','Anal__00060_.png','Base__00142_.png',
     ];
     const shuffledFileNames = shuffleArray(fileNames);
     setImages(shuffledFileNames);

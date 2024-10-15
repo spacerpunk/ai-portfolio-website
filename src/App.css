@@ -1,7 +1,8 @@
 #root {
-  margin: 0 auto;
-  padding: 0rem;
+  height: auto;
+  overflow: visible;
   text-align: center;
+  overflow: auto;
 }
 
 body, html {
@@ -13,43 +14,12 @@ body, html {
 
 .app-container {
   display: flex;
-  height: 100vh;
-  width: 100vw;
-}
-
-.left-side {
-  flex: 2; /* Adjust this value to control the proportion */
-  overflow: hidden;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-}
-
-.right-side {
-  flex: 1; /* Adjust this value to control the proportion */
-  display: flex;
-  margin: 10px;
   flex-direction: column;
-}
-
-.top-right,
-.bottom-right {
-  flex: auto;
-  padding: 10px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  border: 5px solid #000000;
+  height: 100vh;
+  width: 100%
 }
 
-.top-right {
-  flex:2;
-  background-color: #e0e0e0;
-}
-
-.bottom-right {
-  flex: 1;
-  background-color: #d0d0d0;
-}
 
 
 
