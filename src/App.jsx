@@ -1,46 +1,43 @@
 import React from 'react'
 import About from './components/About'
-import AudioDevice from './components/AudioDevice'
 import Metadata from './components/Metadata'
 import Gallery from './components/Gallery'
 import ImageAnimation from './components/ImageAnimation'
+import ArchViz from './components/ArchViz'
+import Title from './components/Title'
+import Background from './components/Background'
 import './App.css'
 
 function App() {
 
-  const images1 = [
-    "./_images/arsat (1).png",
-    "./_images/arsat (2).png",
-    "./_images/arsat (3).png",
-    "./_images/arsat (4).png",
-  ];
-  
-  const images2 = [
-    "./_images/arsat (5).png",
-    "./_images/arsat (6).png",
-    "./_images/arsat (7).png",
-    "./_images/arsat (8).png",
-  ];
+const images1 = [
+  "./_images/Archviz/01/Building_01_Depth.png",
+  "./_images/Archviz/01/Building_01_Normal.png",
+  "./_images/Archviz/01/Building_01_Canny.png",
+  "./_images/Archviz/01/Building_01_Render.png",
+];
 
-  return (
+const images2 = [
+  "./_images/Archviz/02/Building_02_Depth.png",
+  "./_images/Archviz/02/Building_02_Normal.png",
+  "./_images/Archviz/02/Building_02_Canny.png",
+  "./_images/Archviz/02/Building_02_Render.png",
+];
+
+ return (
     <div className="app-container">
-        <ImageAnimation images={images1} />      
-        <ImageAnimation images={images2} />      
+      <Background />
+        {/* <Title /> */}
+        {/* <NavBar /> */}
+        {/* <Gallery /> */}
+        {/* <ArchViz /> */}
+        {/* <ImageAnimation images={images1} />*/}
+        {/* <ImageAnimation images={images2} />*/}
+        {/* <Breakdown />*/}
+        {/*<Demo /> */}
+        {/* <About /> */}
     </div>
   )
 }
 
 export default App
-
-/*<div className="left-side">
-<Gallery /> 
-</div>
-<div className="right-side">
-<div className="top-right">
-<About /> 
-</div>
-<div className="bottom-right">
-<Metadata />
-</div>
-</div> 
-*/

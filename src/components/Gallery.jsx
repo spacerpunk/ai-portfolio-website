@@ -39,7 +39,7 @@ const Gallery = () => {
         {images.map((fileName, index) => (
           <GridItem
             key={fileName}
-            src={`./_images/${fileName}`}
+            src={`./Assets/Images/${fileName}`}
             alt={`Image ${index + 1}`}
           />
         ))}

@@ -1,0 +1,548 @@
+{
+  "210": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "SDXL Checkpoint"
+    }
+  },
+  "211": {
+    "inputs": {
+      "vae_name": "sdxl_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "219": {
+    "inputs": {
+      "seed": 156680208700285
+    },
+    "class_type": "Seed",
+    "_meta": {
+      "title": "Seed"
+    }
+  },
+  "221": {
+    "inputs": {
+      "width": 1344,
+      "height": 768,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "223": {
+    "inputs": {
+      "text": "((a young German woman standing next to a BMW M4 Race car on a German road, desolate road )), (long exposure photo:1.4), (vibrant sky:1.4), (silhouetted subject:1.2), (high contrast:1.2), dynamic composition, high detail, natural light, expressive, ethereal, atmospheric, moody, dramatic, deep shadows, soft highlights, rich colors, glowing reflections, textured, expansive, mesmerizing, bold, surreal, dreamlike, powerful, captivating, 24mm lens, f/8, evocative, enchanting, majestic",
+      "clip": [
+        "210",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "224": {
+    "inputs": {
+      "text": "park, trees,(low quality, low detail, bw, bad photo, bad photography,poorly lit, bad shadow,:1.4),(painting, drawing, sketch, cartoon, anime, manga, render, CG, 3d, cartoon,airbrushed, cgi, render, blender, digital art, amateur:1.3),(bad hands, bad anatomy, bad body, bad face, bad teeth, bad arms, bad legs, deformities,disfigured,ugly, mutated, malformed, mutilated,missing fingers,ugly nails,:1.2), text, watermark ",
+      "clip": [
+        "210",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "232": {
+    "inputs": {
+      "strength": 0.25,
+      "start_percent": 0,
+      "end_percent": 0.5,
+      "positive": [
+        "223",
+        0
+      ],
+      "negative": [
+        "224",
+        0
+      ],
+      "control_net": [
+        "233",
+        0
+      ],
+      "image": [
+        "247",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "DEPTH"
+    }
+  },
+  "233": {
+    "inputs": {
+      "control_net_name": "Union\\controlnet-union-sdxl-1.0.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "234": {
+    "inputs": {
+      "images": [
+        "247",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "236": {
+    "inputs": {
+      "image": "untitled (1).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "INPUT IMAGE"
+    }
+  },
+  "247": {
+    "inputs": {
+      "preprocessor": "DepthAnythingPreprocessor",
+      "resolution": 768,
+      "image": [
+        "236",
+        0
+      ]
+    },
+    "class_type": "AIO_Preprocessor",
+    "_meta": {
+      "title": "AIO Aux Preprocessor"
+    }
+  },
+  "248": {
+    "inputs": {
+      "strength": 0.25,
+      "start_percent": 0,
+      "end_percent": 0.5,
+      "positive": [
+        "232",
+        0
+      ],
+      "negative": [
+        "232",
+        1
+      ],
+      "control_net": [
+        "249",
+        0
+      ],
+      "image": [
+        "252",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "POSE"
+    }
+  },
+  "249": {
+    "inputs": {
+      "control_net_name": "Union\\controlnet-union-sdxl-1.0.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "250": {
+    "inputs": {
+      "images": [
+        "252",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "252": {
+    "inputs": {
+      "preprocessor": "OpenposePreprocessor",
+      "resolution": 768,
+      "image": [
+        "236",
+        0
+      ]
+    },
+    "class_type": "AIO_Preprocessor",
+    "_meta": {
+      "title": "AIO Aux Preprocessor"
+    }
+  },
+  "253": {
+    "inputs": {
+      "strength": 0.25,
+      "start_percent": 0,
+      "end_percent": 0.5,
+      "positive": [
+        "248",
+        0
+      ],
+      "negative": [
+        "248",
+        1
+      ],
+      "control_net": [
+        "254",
+        0
+      ],
+      "image": [
+        "257",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "CANNY"
+    }
+  },
+  "254": {
+    "inputs": {
+      "control_net_name": "Union\\controlnet-union-sdxl-1.0.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "255": {
+    "inputs": {
+      "images": [
+        "257",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "257": {
+    "inputs": {
+      "preprocessor": "CannyEdgePreprocessor",
+      "resolution": 768,
+      "image": [
+        "236",
+        0
+      ]
+    },
+    "class_type": "AIO_Preprocessor",
+    "_meta": {
+      "title": "AIO Aux Preprocessor"
+    }
+  },
+  "258": {
+    "inputs": {
+      "strength": 0.3,
+      "start_percent": 0,
+      "end_percent": 0.5,
+      "positive": [
+        "253",
+        0
+      ],
+      "negative": [
+        "253",
+        1
+      ],
+      "control_net": [
+        "259",
+        0
+      ],
+      "image": [
+        "262",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "NORMAL"
+    }
+  },
+  "259": {
+    "inputs": {
+      "control_net_name": "Union\\controlnet-union-sdxl-1.0.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "260": {
+    "inputs": {
+      "images": [
+        "262",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "262": {
+    "inputs": {
+      "preprocessor": "DSINE-NormalMapPreprocessor",
+      "resolution": 768,
+      "image": [
+        "236",
+        0
+      ]
+    },
+    "class_type": "AIO_Preprocessor",
+    "_meta": {
+      "title": "AIO Aux Preprocessor"
+    }
+  },
+  "278": {
+    "inputs": {
+      "preset": "VIT-G (medium strength)",
+      "model": [
+        "210",
+        0
+      ]
+    },
+    "class_type": "IPAdapterUnifiedLoader",
+    "_meta": {
+      "title": "IPAdapter Unified Loader"
+    }
+  },
+  "288": {
+    "inputs": {
+      "samples": [
+        "560",
+        0
+      ],
+      "vae": [
+        "211",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "400": {
+    "inputs": {
+      "filename_prefix": "MediaMonks_AllTheGoodThings-Generation-v1.9-FirstPass",
+      "images": [
+        "288",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "OUTPUT"
+    }
+  },
+  "493": {
+    "inputs": {
+      "text": "cinematic still wide front angle shot of a BMW M4 Car with detailed grille <br>\ncinematic still, wide shot, young German woman wearing a RED sweater and jeans, short hair, candid expression, freckles, skin pores, ultra-detailed skin <br>\ngerman road <br>\namazing sky\n\n",
+      "line_break": "<br>",
+      "clip": [
+        "210",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode|MediaMonks",
+    "_meta": {
+      "title": "CRYPTO MATE - PROMPT"
+    }
+  },
+  "494": {
+    "inputs": {
+      "model": [
+        "542",
+        0
+      ],
+      "base_mask": [
+        "500",
+        0
+      ],
+      "masks": [
+        "495",
+        0
+      ],
+      "conds": [
+        "493",
+        0
+      ]
+    },
+    "class_type": "AttentionCouple|MediaMonks",
+    "_meta": {
+      "title": "Attention Couple"
+    }
+  },
+  "495": {
+    "inputs": {
+      "invert": false,
+      "multi_masks_from_single_image": true,
+      "colors": "1:(255,0,0),10\n2:(0,255,0),10\n3:(255,255,255),10\n4:(0,255,0),10\n\n",
+      "per_batch": 16,
+      "image_1": [
+        "498",
+        0
+      ]
+    },
+    "class_type": "ColorPromptToMask|MediaMonks",
+    "_meta": {
+      "title": "Color Prompt To Mask"
+    }
+  },
+  "498": {
+    "inputs": {
+      "image": "untitled1 (3).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "CRYPTO MATE"
+    }
+  },
+  "499": {
+    "inputs": {
+      "images": [
+        "501",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "500": {
+    "inputs": {
+      "value": 1,
+      "width": 1344,
+      "height": 768
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "501": {
+    "inputs": {
+      "mask": [
+        "500",
+        0
+      ]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "541": {
+    "inputs": {
+      "image": "mjip4.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "STYLE"
+    }
+  },
+  "542": {
+    "inputs": {
+      "weight": 0.5,
+      "weight_faceidv2": 0,
+      "weight_type": "style transfer precise",
+      "combine_embeds": "concat",
+      "start_at": 0,
+      "end_at": 1,
+      "embeds_scaling": "V only",
+      "layer_weights": "3:2.6, 6:1",
+      "model": [
+        "278",
+        0
+      ],
+      "ipadapter": [
+        "278",
+        1
+      ],
+      "image": [
+        "541",
+        0
+      ]
+    },
+    "class_type": "IPAdapterMS",
+    "_meta": {
+      "title": "STYLE STRENGHT"
+    }
+  },
+  "560": {
+    "inputs": {
+      "samples": [
+        "569",
+        0
+      ]
+    },
+    "class_type": "gcLatentTunnel",
+    "_meta": {
+      "title": "LatentGarbageCollector"
+    }
+  },
+  "569": {
+    "inputs": {
+      "seed": [
+        "219",
+        3
+      ],
+      "steps": 50,
+      "cfg": 5,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "494",
+        0
+      ],
+      "positive": [
+        "258",
+        0
+      ],
+      "negative": [
+        "258",
+        1
+      ],
+      "latent_image": [
+        "221",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  }
+}
